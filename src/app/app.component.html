@@ -1,0 +1,34 @@
+<p>Liczba 1:</p>
+<input type="number" [(ngModel)]="num1" (change)="zmianaOperacji()" />
+<p>Liczba 2:</p>
+<input type="number" [(ngModel)]="num2" (change)="zmianaOperacji()" />
+<p>Operacja + - / *:</p>
+<input
+  type="text"
+  *ngIf="zmianaOperacji"
+  [(ngModel)]="op"
+  (change)="zmianaOperacji()"
+/>
+
+<p>Wynik: {{ wynik }} {{ error }}</p>
+
+<p>Imię: {{ pies.imie }}</p>
+<p>Rasa: {{ pies.rasa }}</p>
+<p>Wiek: {{ pies.wiek }}</p>
+
+<h3>ZADANIA DO ZREALIZOWANIA</h3>
+<input
+  #nowe
+  placeholder="Dodaj nowe:"
+  (keyup.enter)="dodZad(nowe.value); nowe.value = ''"
+  id="dodZadInput"
+/>
+
+<button (click)="dodZad(nowe.value)">Dodaj</button>
+<ul>
+  <li *ngFor="let zadanie of zadania">
+    {{ zadanie.nazwa }} <button (click)="przesunZad(zadanie.nazwa)"></button>
+  </li>
+</ul>
+<h3>SKOŃCZONE ZADANIA</h3>
+<ul></ul>
